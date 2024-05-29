@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef, ChangeEvent, FormEvent, KeyboardEvent, useEffect } from "react";
+import "./App.css";
+import * as XLSX from "xlsx";
+// import { BarcodeScanner } from "react-barcode-scanner";
+// import { useSymbologyScanner } from "@use-symbology-scanner/react";
+// import { saveAs } from "file-saver";
+import axios from 'axios';
+import { UserContextProvider } from './UserContext';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import IndexPage from './page/IndexPage';
+import LoginPage from './page/LoginPage';
+import RegisterPage from './page/RegisterPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  // const {setProductDetails, productDetails} = useState(null);
 
+  return (
+    
+    <UserContextProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<IndexPage />} />
+            {/* <Route path="/login" element={<LoginPage />} /> */}
+            {/* <Route path="/register" element={<RegisterPage />} /> */}
+          </Routes>
+      </Router>
+    </UserContextProvider>
+  );
+};
 export default App;
